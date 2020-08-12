@@ -6,6 +6,7 @@
   <modules>
     <module>micro-common</module>
     <module>micro-security</module>
+    <module>micro-user</module>
   </modules>
 
   <parent>

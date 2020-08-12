@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="micro-security" />
+        <module name="mirco-security" />
+        <module name="micro-user" />
         <module name="micro-common" />
       </profile>
     </annotationProcessing>
@@ -20,6 +22,7 @@
       <module name="micro-common" options="-parameters" />
       <module name="micro-security" options="-parameters" />
       <module name="micro-user" options="-parameters" />
+      <module name="mirco-security" options="-parameters" />
       <module name="mirco-user" options="-parameters" />
     </option>
   </component>
