@@ -9,7 +9,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>micro-security</artifactId>
 
+  <groupId>com.souther.cloud</groupId>
+  <artifactId>micro-security</artifactId>
+  <version>${micro.version}</version>
+  <packaging>jar</packaging>
 
 </project>
