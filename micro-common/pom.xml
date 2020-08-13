@@ -11,7 +11,22 @@
 
   <groupId>com.souther.cloud</groupId>
   <artifactId>micro-common</artifactId>
-  <version>${micro.version}</version>
   <packaging>jar</packaging>
+  <version>${micro.version}</version>
+  <description>微服务公共jar</description>
+
+  <!--  版本管理-->
+  <properties>
+    <lombok.version>1.18.12</lombok.version>
+  </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>
