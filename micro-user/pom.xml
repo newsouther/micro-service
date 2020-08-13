@@ -11,5 +11,43 @@
 
   <artifactId>micro-user</artifactId>
 
+  <dependencies>
+    <!--springboot-web-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+
+    <!-- ***********************************************springcloud-->
+
+    <!--            服务注册/发现-->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+
+    <!--        配置中心来做配置管理-->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+
+    <!-- Zipkin 依赖 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-zipkin</artifactId>
+    </dependency>
+
+    <!-- ***********************************************本项目-->
+
+    <!--mirco-common-->
+    <dependency>
+      <groupId>com.souther.cloud</groupId>
+      <artifactId>micro-common</artifactId>
+      <version>${micro.version}</version>
+    </dependency>
+  </dependencies>
+
 
 </project>

@@ -33,6 +33,7 @@
     <micro.version>0.0.1</micro.version>
   </properties>
 
+  <!--选择 SpringCloud 和 SpringCloud Alibaba的版本对应-->
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -46,6 +47,8 @@
         <groupId>com.alibaba.cloud</groupId>
         <artifactId>spring-cloud-alibaba-dependencies</artifactId>
         <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
