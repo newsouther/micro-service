@@ -13,4 +13,9 @@
   <packaging>pom</packaging>
   <description>用户服务依赖管理</description>
 
+  <modules>
+    <module>user-common</module>
+    <module>user-service</module>
+  </modules>
+
 </project>

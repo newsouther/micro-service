@@ -20,8 +20,12 @@
     <lombok.version>1.18.12</lombok.version>
   </properties>
 
-
   <dependencies>
+    <!--    ************************** 微服务相关 *********************************-->
+
+    <!--    ************************** 本项目 *********************************-->
+
+    <!--    ************************** 其它 *********************************-->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>

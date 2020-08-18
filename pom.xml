@@ -33,6 +33,7 @@
     <micro.version>0.0.1</micro.version>
   </properties>
 
+  <!--选择 SpringCloud 和 SpringCloud Alibaba的版本对应-->
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -46,6 +47,8 @@
         <groupId>com.alibaba.cloud</groupId>
         <artifactId>spring-cloud-alibaba-dependencies</artifactId>
         <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -77,58 +80,58 @@
   </build>
 
   <!-- 仓库配置 -->
-  <repositories>
-    <repository>
-      <id>aliyun-repos</id>
-      <name>Aliyun Repository</name>
-      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
+<!--  <repositories>-->
+<!--    <repository>-->
+<!--      <id>aliyun-repos</id>-->
+<!--      <name>Aliyun Repository</name>-->
+<!--      <url>http://maven.aliyun.com/nexus/content/groups/public</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
 
-    <repository>
-      <id>sonatype-repos</id>
-      <name>Sonatype Repository</name>
-      <url>https://oss.sonatype.org/content/groups/public</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
+<!--    <repository>-->
+<!--      <id>sonatype-repos</id>-->
+<!--      <name>Sonatype Repository</name>-->
+<!--      <url>https://oss.sonatype.org/content/groups/public</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
 
-    <repository>
-      <id>sonatype-repos-s</id>
-      <name>Sonatype Repository</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
+<!--    <repository>-->
+<!--      <id>sonatype-repos-s</id>-->
+<!--      <name>Sonatype Repository</name>-->
+<!--      <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+<!--      <releases>-->
+<!--        <enabled>false</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>true</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
 
-    <repository>
-      <id>spring-snapshots</id>
-      <name>Spring Snapshots</name>
-      <url>https://repo.spring.io/snapshot</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>spring-milestones</id>
-      <name>Spring Milestones</name>
-      <url>https://repo.spring.io/milestone</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+<!--    <repository>-->
+<!--      <id>spring-snapshots</id>-->
+<!--      <name>Spring Snapshots</name>-->
+<!--      <url>https://repo.spring.io/snapshot</url>-->
+<!--      <snapshots>-->
+<!--        <enabled>true</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+<!--    <repository>-->
+<!--      <id>spring-milestones</id>-->
+<!--      <name>Spring Milestones</name>-->
+<!--      <url>https://repo.spring.io/milestone</url>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+<!--  </repositories>-->
 </project>
