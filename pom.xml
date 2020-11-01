@@ -7,7 +7,7 @@
     <module>micro-common</module>
     <module>micro-security</module>
     <module>micro-user</module>
-    <module>micro-security</module>
+    <module>micro-pay</module>
   </modules>
 
   <parent>
@@ -56,13 +56,13 @@
   <build>
     <plugins>
       <!-- Compiler 插件, 设定 JDK 版本 -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <showWarnings>true</showWarnings>
-        </configuration>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-compiler-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <showWarnings>true</showWarnings>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
     </plugins>
 
     <!-- 资源文件配置 -->

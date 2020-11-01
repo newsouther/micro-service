@@ -9,7 +9,6 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-
   <groupId>com.souther.cloud</groupId>
   <artifactId>micro-security</artifactId>
   <version>${micro.version}</version>
@@ -22,6 +21,5 @@
     <!--    ************************** 本项目 *********************************-->
 
     <!--    ************************** 其它 *********************************-->
-
   </dependencies>
 </project>
