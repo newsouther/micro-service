@@ -8,6 +8,7 @@
     <module>micro-security</module>
     <module>micro-user</module>
     <module>micro-pay</module>
+    <module>micro-gateway</module>
   </modules>
 
   <parent>
@@ -31,11 +32,16 @@
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     <micro.version>0.0.1</micro.version>
+    <!-- other -->
+    <jjwt.version>0.9.1</jjwt.version>
   </properties>
 
   <!--选择 SpringCloud 和 SpringCloud Alibaba的版本对应-->
   <dependencyManagement>
     <dependencies>
+      <!--    ************************** 微服务相关 *********************************-->
+
+      <!--    ************************** 本项目 *********************************-->
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
@@ -49,6 +55,15 @@
         <version>${spring-cloud-alibaba.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+
+      <!--    ************************** 其它 *********************************-->
+
+      <!--JWT(Json Web Token)登录支持-->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>${jjwt.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
