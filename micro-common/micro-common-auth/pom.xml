@@ -27,18 +27,7 @@
       <version>${mall.version}</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.souther.cloud</groupId>
-      <artifactId>micro-common-redis</artifactId>
-      <version>${mall.version}</version>
-    </dependency>
-
     <!--    ************************** 其它 *********************************-->
-
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-    </dependency>
 
   </dependencies>
 </project>
