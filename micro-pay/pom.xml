@@ -46,8 +46,8 @@
     <!--mirco-common-->
     <dependency>
       <groupId>com.souther.cloud</groupId>
-      <artifactId>micro-common</artifactId>
-      <version>${micro.version}</version>
+      <artifactId>micro-common-core</artifactId>
+      <version>${mall.version}</version>
     </dependency>
 
     <!--    ************************** 其它 *********************************-->

@@ -1,0 +1,37 @@
+server:
+  port: 6000
+
+spring:
+  application:
+    name: micro-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 5.189.166.137:8848
+        group: micro-service
+      config:
+        server-addr: 5.189.166.137:8848 # nacos的服务端地址
+        file-extension: yaml # 配置文件格式
+        group: micro-service
+        refresh-enabled: true
+#        shared-configs[0]:
+#          data-id: common.yml
+#          group: micro-service   # 默认为DEFAULT_GROUP
+#          refresh: true   # 是否动态刷新，默认为false
+    gateway:
+      discovery:
+        locator:
+          # 是否与服务发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为false
+          enabled: true
+          lower-case-service-id: true #使用小写service-id
+      # 处理响应头重复
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            #这里有个allowCredentials: true这个东西是设置允许访问携带cookie的，这点一定要和前端对应！
+            allowCredentials: true
+            #可以填写多个域名用","隔开 例如 "*"代表允许所有
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allow-credentials: true

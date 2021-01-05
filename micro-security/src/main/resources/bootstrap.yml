@@ -1,9 +1,9 @@
 server:
-  port: 6001
+  port: 6002
 
 spring:
   application:
-    name: micro-user
+    name: micro-security
   cloud:
     nacos:
       discovery:
@@ -14,7 +14,9 @@ spring:
         file-extension: yaml # 配置文件格式
         group: micro-service
         refresh-enabled: true
-#        shared-configs[0]:
-#          data-id: micro-user-common.yml
-#          group: micro-service   # 默认为DEFAULT_GROUP
-#          refresh: true   # 是否动态刷新，默认为false
+
+encrypt:
+  key-store:
+    location: classpath:zlt.jks
+    secret: zlt!@#$
+    alias: zlt

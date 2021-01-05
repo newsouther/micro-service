@@ -9,28 +9,14 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.souther.cloud</groupId>
   <artifactId>micro-common</artifactId>
-  <packaging>jar</packaging>
-  <version>${micro.version}</version>
-  <description>微服务公共jar</description>
+  <description>微服务公共组件</description>
+  <packaging>pom</packaging>
 
-  <!--  版本管理-->
-  <properties>
-    <lombok.version>1.18.12</lombok.version>
-  </properties>
-
-  <dependencies>
-    <!--    ************************** 微服务相关 *********************************-->
-
-    <!--    ************************** 本项目 *********************************-->
-
-    <!--    ************************** 其它 *********************************-->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>micro-common-core</module>
+    <module>micro-common-auth</module>
+    <module>micro-common-redis</module>
+  </modules>
 
 </project>

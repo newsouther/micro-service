@@ -8,7 +8,6 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <packaging>jar</packaging>
 
   <artifactId>micro-gateway</artifactId>
   <description>网关</description>
@@ -38,10 +37,26 @@
     <!--springboot-web-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <!--mirco-common-->
+    <dependency>
+      <groupId>com.souther.cloud</groupId>
+      <artifactId>micro-common-core</artifactId>
+      <version>${mall.version}</version>
     </dependency>
 
     <!--    ************************** 其它 *********************************-->
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
