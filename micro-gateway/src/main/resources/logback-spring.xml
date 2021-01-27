@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 从高到地低 OFF 、 FATAL 、 ERROR 、 WARN 、 INFO 、 DEBUG 、 TRACE 、 ALL -->
+<!-- 日志输出规则  根据当前ROOT 级别，日志输出时，级别高于root默认的级别时  会输出 -->
+<!-- 以下 每个配置的 filter 是过滤掉输出文件里面，会出现高级别文件，依然出现低级别的日志信息，通过filter 过滤只记录本级别的日志-->
+
+<!-- 属性描述
+scan：设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true
+scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。
+当scan为true时，此属性生效。默认的时间间隔为1分钟。
+debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
+-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+  <!--定义日志文件的存储地址 -->
+  <property name="LOG_HOME" value="/logs/micro-gateway"/>
+
+  <springProperty scope="context" name="applicationName" source="spring.application.name" />
+  <springProperty scope="context" name="applicationPort" source="server.port" />
+
+  <!-- 日志输出格式 -->
+  <!--  <property name="FILE_LOG_PATTERN"-->
+  <!--    value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"/>-->
+  <property name="FILE_LOG_PATTERN"
+    value="%d ---[ provider ]--- [${applicationName},%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-B3-ParentSpanId},%X{X-Span-Export}] [%thread] %-5level %logger{50} - %msg%n"/>
+  <!--  <property name="FILE_LOG_PATTERN"-->
+  <!--    value="%d{yyyy-MM-dd HH:mm:ss.SSS}[${applicationName},%X{X-B3-TraceId:-},%X{userId:-}] [%thread] %-5level %logger{50} - %msg%n"/>-->
+
+  <!-- 控制台输出 -->
+  <appender name="ConsoleLog" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+
+    <!--    <additionalField>-->
+    <!--      <key>X-B3-ParentSpanId</key>-->
+    <!--      <value>@{X-B3-ParentSpanId}</value>-->
+    <!--    </additionalField>-->
+    <!--    <additionalField>-->
+    <!--      <key>X-B3-SpanId</key>-->
+    <!--      <value>@{X-B3-SpanId}</value>-->
+    <!--    </additionalField>-->
+    <!--    <additionalField>-->
+    <!--      <key>X-B3-TraceId</key>-->
+    <!--      <value>@{X-B3-TraceId}</value>-->
+    <!--    </additionalField>-->
+
+  </appender>
+
+  <!--Info文件输出-->
+  <!-- 按照每天和固定大小(5MB)生成日志文件【最新的日志，是日期最大数字最大的】 -->
+  <appender name="FileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--只输出INFO只输出INFO -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!--过滤 DEBUG-->
+      <level>INFO</level>
+      <!--匹配到就禁止-->
+      <onMatch>ACCEPT</onMatch>
+      <!--没有匹配到就允许-->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!--滚动策略-->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!--日志文件输出的文件名-->
+      <FileNamePattern>${LOG_HOME}/Info/info_%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+      <!--日志文件保留天数-->
+      <MaxHistory>30</MaxHistory>
+      <!--日志文件最大的大小-->
+      <MaxFileSize>5MB</MaxFileSize>
+    </rollingPolicy>
+    <!--格式化输出-->
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+
+  <!--debug文件输出-->
+  <appender name="FileDebugLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+    <!--滚动策略-->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!--日志文件输出的文件名-->
+      <FileNamePattern>${LOG_HOME}/Debug/debug_%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+      <!--日志文件保留天数-->
+      <MaxHistory>30</MaxHistory>
+      <!--日志文件最大的大小-->
+      <MaxFileSize>5MB</MaxFileSize>
+    </rollingPolicy>
+    <!--格式化输出-->
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+
+  <!--Error文件输出-->
+  <!-- 按照每天和固定大小(5MB)生成日志文件【最新的日志，是日期最大数字最大的】 -->
+  <appender name="FileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <!--设置日志级别,过滤掉info日志,只输入error日志-->
+      <level>ERROR</level>
+    </filter>
+    <!--滚动策略-->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!--日志文件输出的文件名-->
+      <FileNamePattern>${LOG_HOME}/Error/error_%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+      <!--日志文件保留天数-->
+      <MaxHistory>30</MaxHistory>
+      <!--日志文件最大的大小-->
+      <MaxFileSize>5MB</MaxFileSize>
+    </rollingPolicy>
+    <!--格式化输出-->
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+
+  <!--日志等级设置-->
+  <logger name="org.springframework" level="error"></logger>
+
+  <root level="warn">
+    <appender-ref ref="ConsoleLog"/>
+  </root>
+
+  <logger name="com.souther.cloud" level="debug" additivity="false">
+    <appender-ref ref="ConsoleLog"/>
+    <appender-ref ref="FileInfoLog"/>
+    <appender-ref ref="FileDebugLog"/>
+    <appender-ref ref="FileErrorLog"/>
+  </logger>
+
+</configuration>

@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>micro-common-core</artifactId>
-  <version>${mall.version}</version>
+  <version>${micro.version}</version>
   <packaging>jar</packaging>
   <description>公共-核心</description>
 
@@ -31,6 +31,13 @@
       <artifactId>lombok</artifactId>
       <version>${lombok.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>${hutool-all.version}</version>
+    </dependency>
+
 
   </dependencies>
 </project>

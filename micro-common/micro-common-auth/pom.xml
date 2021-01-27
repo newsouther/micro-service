@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>micro-common-auth</artifactId>
-  <version>${mall.version}</version>
+  <version>${micro.version}</version>
   <packaging>jar</packaging>
   <description>公共-认证</description>
 
@@ -24,7 +24,7 @@
     <dependency>
       <groupId>com.souther.cloud</groupId>
       <artifactId>micro-common-core</artifactId>
-      <version>${mall.version}</version>
+      <version>${micro.version}</version>
     </dependency>
 
     <!--    ************************** 其它 *********************************-->

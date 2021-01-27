@@ -1,6 +1,6 @@
 package com.souther.cloud.filter;
 
-import com.souther.cloud.config.IgnoreUrlsConfig;
+import com.souther.cloud.config.WhiteListConfig;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
   @Resource
-  private IgnoreUrlsConfig ignoreUrlsConfig;
+  private WhiteListConfig whiteListConfig;
 
   @Override
   public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -36,7 +36,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     }
     //白名单请求直接放行
     PathMatcher pathMatcher = new AntPathMatcher();
-    for (String path : ignoreUrlsConfig.getUrls()) {
+    for (String path : whiteListConfig.getUrls()) {
       if (pathMatcher.match("/**" + path, request.getPath().toString())) {
         return chain.filter(exchange);
       }

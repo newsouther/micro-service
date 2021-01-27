@@ -35,3 +35,8 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
             allow-credentials: true
+
+# 配置白名单路径
+white-list:
+  urls:
+    - "/youlai-auth/oauth/token"

@@ -43,11 +43,31 @@
     <!--mirco-common-->
     <dependency>
       <groupId>com.souther.cloud</groupId>
-      <artifactId>micro-common-core</artifactId>
-      <version>${mall.version}</version>
+      <artifactId>micro-common-redis</artifactId>
+      <version>${micro.version}</version>
     </dependency>
 
     <!--    ************************** 其它 *********************************-->
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-oauth2-resource-server</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-oauth2-jose</artifactId>
+    </dependency>
+
   </dependencies>
 
   <build>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <modules>
     <module>micro-common</module>
@@ -9,12 +8,13 @@
     <module>micro-user</module>
     <module>micro-pay</module>
     <module>micro-gateway</module>
+    <module>micro-mbg</module>
   </modules>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.5.RELEASE</version>
+    <version>2.3.4.RELEASE</version>
   </parent>
 
   <groupId>com.souther.cloud</groupId>
@@ -29,11 +29,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Spring Settings -->
-    <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-    <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+    <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+    <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
     <micro.version>0.0.1</micro.version>
     <!-- other -->
     <jjwt.version>0.9.1</jjwt.version>
+    <hutool-all.version>5.5.6</hutool-all.version>
   </properties>
 
   <!--选择 SpringCloud 和 SpringCloud Alibaba的版本对应-->
@@ -65,6 +66,8 @@
         <artifactId>jjwt</artifactId>
         <version>${jjwt.version}</version>
       </dependency>
+
+
     </dependencies>
   </dependencyManagement>
 
@@ -95,58 +98,58 @@
   </build>
 
   <!-- 仓库配置 -->
-<!--  <repositories>-->
-<!--    <repository>-->
-<!--      <id>aliyun-repos</id>-->
-<!--      <name>Aliyun Repository</name>-->
-<!--      <url>http://maven.aliyun.com/nexus/content/groups/public</url>-->
-<!--      <releases>-->
-<!--        <enabled>true</enabled>-->
-<!--      </releases>-->
-<!--      <snapshots>-->
-<!--        <enabled>false</enabled>-->
-<!--      </snapshots>-->
-<!--    </repository>-->
+  <repositories>
+    <repository>
+      <id>aliyun-repos</id>
+      <name>Aliyun Repository</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
 
-<!--    <repository>-->
-<!--      <id>sonatype-repos</id>-->
-<!--      <name>Sonatype Repository</name>-->
-<!--      <url>https://oss.sonatype.org/content/groups/public</url>-->
-<!--      <releases>-->
-<!--        <enabled>true</enabled>-->
-<!--      </releases>-->
-<!--      <snapshots>-->
-<!--        <enabled>false</enabled>-->
-<!--      </snapshots>-->
-<!--    </repository>-->
+    <repository>
+      <id>sonatype-repos</id>
+      <name>Sonatype Repository</name>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
 
-<!--    <repository>-->
-<!--      <id>sonatype-repos-s</id>-->
-<!--      <name>Sonatype Repository</name>-->
-<!--      <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-<!--      <releases>-->
-<!--        <enabled>false</enabled>-->
-<!--      </releases>-->
-<!--      <snapshots>-->
-<!--        <enabled>true</enabled>-->
-<!--      </snapshots>-->
-<!--    </repository>-->
+    <repository>
+      <id>sonatype-repos-s</id>
+      <name>Sonatype Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
 
-<!--    <repository>-->
-<!--      <id>spring-snapshots</id>-->
-<!--      <name>Spring Snapshots</name>-->
-<!--      <url>https://repo.spring.io/snapshot</url>-->
-<!--      <snapshots>-->
-<!--        <enabled>true</enabled>-->
-<!--      </snapshots>-->
-<!--    </repository>-->
-<!--    <repository>-->
-<!--      <id>spring-milestones</id>-->
-<!--      <name>Spring Milestones</name>-->
-<!--      <url>https://repo.spring.io/milestone</url>-->
-<!--      <snapshots>-->
-<!--        <enabled>false</enabled>-->
-<!--      </snapshots>-->
-<!--    </repository>-->
-<!--  </repositories>-->
+    <repository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://repo.spring.io/snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>
