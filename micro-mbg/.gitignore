@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+/.mvn/wrapper/maven-wrapper.properties
+/.mvn/wrapper/maven-wrapper.jar
+/.mvn/wrapper/MavenWrapperDownloader.java
+/src/test/java/com/souther/cloud/MicroMbgApplication.java
+/mvnw.cmd
+/mvnw
