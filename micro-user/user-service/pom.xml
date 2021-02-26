@@ -44,11 +44,17 @@
     <!--mirco-common-->
     <dependency>
       <groupId>com.souther.cloud</groupId>
-      <artifactId>micro-common-core</artifactId>
+      <artifactId>micro-common-redis</artifactId>
       <version>${micro.version}</version>
     </dependency>
 
-    <!--    ************************** 其它 *********************************-->
+    <dependency>
+      <groupId>com.souther.cloud</groupId>
+      <artifactId>micro-common-web</artifactId>
+      <version>${micro.version}</version>
+    </dependency>
+
+    <!--    ************************** 其它*********************************-->
 
   </dependencies>
 

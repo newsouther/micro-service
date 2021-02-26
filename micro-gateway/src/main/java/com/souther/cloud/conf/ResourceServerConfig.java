@@ -1,8 +1,9 @@
-package com.souther.cloud.config;
+package com.souther.cloud.conf;
 
 import cn.hutool.core.util.ArrayUtil;
 import com.souther.cloud.component.CustomServerAccessDeniedHandler;
 import com.souther.cloud.component.CustomServerAuthenticationEntryPoint;
+import com.souther.cloud.constant.Constant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,8 +59,8 @@ public class ResourceServerConfig {
   @Bean
   public Converter<Jwt, ? extends Mono<? extends AbstractAuthenticationToken>> jwtAuthenticationConverter() {
     JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-    jwtGrantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
-    jwtGrantedAuthoritiesConverter.setAuthoritiesClaimName("authorities");
+    jwtGrantedAuthoritiesConverter.setAuthorityPrefix(Constant.AUTHORITY_PREFIX);
+    jwtGrantedAuthoritiesConverter.setAuthoritiesClaimName(Constant.AUTHORITY_CLAIM_NAME);
 
     JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
     jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwtGrantedAuthoritiesConverter);

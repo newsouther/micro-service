@@ -17,6 +17,7 @@
     <module>micro-common-core</module>
     <module>micro-common-auth</module>
     <module>micro-common-redis</module>
+    <module>micro-common-web</module>
   </modules>
 
 </project>

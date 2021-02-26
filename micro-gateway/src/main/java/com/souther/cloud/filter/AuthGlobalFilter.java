@@ -1,6 +1,6 @@
 package com.souther.cloud.filter;
 
-import com.souther.cloud.config.WhiteListConfig;
+import com.souther.cloud.conf.WhiteListConfig;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;

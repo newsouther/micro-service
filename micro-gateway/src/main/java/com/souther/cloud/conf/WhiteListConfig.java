@@ -1,4 +1,4 @@
-package com.souther.cloud.config;
+package com.souther.cloud.conf;
 
 import java.util.List;
 import lombok.Data;

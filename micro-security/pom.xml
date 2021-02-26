@@ -40,8 +40,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>com.souther.cloud</groupId>
+      <artifactId>micro-common-web</artifactId>
+      <version>${micro.version}</version>
     </dependency>
 
     <!--    ************************** 其它 *********************************-->

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <modules>
@@ -33,8 +34,9 @@
     <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
     <micro.version>0.0.1</micro.version>
     <!-- other -->
-    <jjwt.version>0.9.1</jjwt.version>
     <hutool-all.version>5.5.6</hutool-all.version>
+    <mysql-connector.version>8.0.16</mysql-connector.version>
+    <mybatis-plus-boot-starter.version>3.3.1.tmp</mybatis-plus-boot-starter.version>
   </properties>
 
   <!--选择 SpringCloud 和 SpringCloud Alibaba的版本对应-->
@@ -60,13 +62,19 @@
 
       <!--    ************************** 其它 *********************************-->
 
-      <!--JWT(Json Web Token)登录支持-->
+      <!--Mysql数据库驱动-->
       <dependency>
-        <groupId>io.jsonwebtoken</groupId>
-        <artifactId>jjwt</artifactId>
-        <version>${jjwt.version}</version>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector.version}</version>
       </dependency>
 
+      <!--  mbp    -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus-boot-starter.version}</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
@@ -74,13 +82,13 @@
   <build>
     <plugins>
       <!-- Compiler 插件, 设定 JDK 版本 -->
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-compiler-plugin</artifactId>-->
-<!--        <configuration>-->
-<!--          <showWarnings>true</showWarnings>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
+      <!--      <plugin>-->
+      <!--        <groupId>org.apache.maven.plugins</groupId>-->
+      <!--        <artifactId>maven-compiler-plugin</artifactId>-->
+      <!--        <configuration>-->
+      <!--          <showWarnings>true</showWarnings>-->
+      <!--        </configuration>-->
+      <!--      </plugin>-->
     </plugins>
 
     <!-- 资源文件配置 -->

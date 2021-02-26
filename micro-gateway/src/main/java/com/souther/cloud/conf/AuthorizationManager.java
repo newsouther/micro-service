@@ -1,10 +1,13 @@
-package com.souther.cloud.config;
+package com.souther.cloud.conf;
 
+import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
-import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.souther.cloud.constant.Constant;
+import com.souther.cloud.constant.RedisKeyEnum;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,6 +19,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.server.authorization.AuthorizationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
+import org.springframework.util.PathMatcher;
 import reactor.core.publisher.Mono;
 
 /**
@@ -37,7 +42,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     ServerHttpRequest request = authorizationContext.getExchange().getRequest();
 
     String path = request.getURI().getPath();
-//    PathMatcher pathMatcher = new AntPathMatcher();
 
     // 1. 对应跨域的预检请求直接放行
     if (request.getMethod() == HttpMethod.OPTIONS) {
@@ -45,22 +49,35 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     }
 
     // 2. token为空拒绝访问
-    String token = request.getHeaders().getFirst("Authorization");
+    String token = request.getHeaders().getFirst(Constant.USER_TOKEN_HEADER);
     if (StrUtil.isBlank(token)) {
       return Mono.just(new AuthorizationDecision(false));
     }
 
     //从Redis中获取当前路径可访问角色列表
-    URI uri = authorizationContext.getExchange().getRequest().getURI();
     //获取hash中指定字段的值： 示例结构：{uri：[role1，role2]}
-    Object obj = redisTemplate.opsForHash().get(path, uri.getPath());
+//    Object obj = redisTemplate.opsForHash().get("key",path);
 //    List<String> authorities = Convert.toList(String.class, obj);
-    List<String> authorities = Arrays.asList("1");
-    authorities = authorities.stream().map(i -> i = "ROLE_" + i).collect(
-        Collectors.toList());
+//    List<String> authorities = Arrays.asList("ROLE_1");
+//    authorities = authorities.stream().map(i -> i = "ROLE_" + i).collect(
+//        Collectors.toList());
+
+    // 从缓存取资源权限角色关系列表
+    Map<Object, Object> permissionRolesMap = redisTemplate.opsForHash()
+        .entries(RedisKeyEnum.RESOURCE_ROLES_KEY.getKey());
+    Iterator<Object> iterator = permissionRolesMap.keySet().iterator();
+
+    // 请求路径匹配到的资源需要的角色权限集合authorities统计 【这里适配通配符】
+    Set<String> authorities = new HashSet<>();
+    PathMatcher pathMatcher = new AntPathMatcher();
+    while (iterator.hasNext()) {
+      String pattern = (String) iterator.next();
+      if (pathMatcher.match(pattern, path)) {
+        authorities.addAll(Convert.toList(String.class, permissionRolesMap.get(pattern)));
+      }
+    }
 
     //认证通过且角色匹配的用户可访问当前路径
-    List<String> finalAuthorities = authorities;
     return mono
         .filter(Authentication::isAuthenticated)
         .flatMapIterable(Authentication::getAuthorities)
@@ -69,8 +86,8 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         .any(roleId -> {
           log.info("访问路径：{}", path);
           log.info("用户角色roleId：{}", roleId);
-          log.info("资源需要权限authorities：{}", finalAuthorities);
-          return finalAuthorities.contains(roleId);
+          log.info("资源需要权限authorities：{}", authorities);
+          return authorities.contains(roleId);
         })
         .map(AuthorizationDecision::new)
         .defaultIfEmpty(new AuthorizationDecision(false));

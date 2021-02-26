@@ -1,5 +1,6 @@
 package com.souther.cloud.utils;
 
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JOSEObjectType;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -12,7 +13,8 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import java.security.KeyPair;
 import java.util.Arrays;
 import java.util.Date;
-import lombok.AllArgsConstructor;
+import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,13 +22,20 @@ import org.springframework.stereotype.Component;
  * @Author souther
  * @Date: 2021/1/27 11:23
  */
-@AllArgsConstructor
 @Component
 public class JwtUtils {
 
-  private KeyPair keyPair;
+  @Autowired
+  private KeyPair keyPairService;
 
-  public String getJwt() {
+  private static KeyPair keyPair;
+
+  @PostConstruct
+  public void init() {
+    keyPair = keyPairService;
+  }
+
+  public static String getJwt(Long userId) {
     JWSSigner jwsSigner = new RSASSASigner(keyPair.getPrivate());
     JWSHeader jwsHeader = new JWSHeader
         .Builder(JWSAlgorithm.RS256)
@@ -35,10 +44,11 @@ public class JwtUtils {
     JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
 //        .issuer("admin")
 //        .subject("sub")
+        .claim("userId", userId)
         .claim("authorities", Arrays.asList("1"))
         .claim("scope", Arrays.asList("all"))
         .expirationTime(new Date(System.currentTimeMillis() + 604800 * 1000))
-        .jwtID("123")
+        .jwtID(IdWorker.getIdStr())
         .build();
     Payload payload = new Payload(jwtClaimsSet.toJSONObject());
     JWSObject jwsObject = new JWSObject(jwsHeader, payload);

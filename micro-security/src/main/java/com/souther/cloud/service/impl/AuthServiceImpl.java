@@ -48,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
     JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
         .issuer("admin")
         .subject("sub")
-        .claim("authorities", Arrays.asList("1"))
+        .claim("authorities", Arrays.asList("Role_1"))
         .claim("scope", Arrays.asList("all"))
         .expirationTime(new Date(System.currentTimeMillis() + 604800 * 1000))
         .jwtID("123")

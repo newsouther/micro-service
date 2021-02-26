@@ -39,4 +39,4 @@ spring:
 # 配置白名单路径
 white-list:
   urls:
-    - "/youlai-auth/oauth/token"
+    - "/micro-security/auth/**"
