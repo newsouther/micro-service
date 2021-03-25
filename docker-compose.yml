@@ -1,0 +1,63 @@
+version: "3"
+services:
+  user-service:
+    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/user-service:latest
+    container_name: user-service
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6001:6001"
+    command:
+      - java
+      - -jar
+      - /app.jar
+      - --spring.profiles.active=dev
+    volumes:
+      - "/dockerconf/project/log/micro-service/user-service:/logs/micro-user-service"  # 项目日志
+    #      - "/dockerconf/project/log/allwin/apiclient_cert.p12:/logs/allwin/apiclient_cert.p12"  # 支付证书
+    networks:
+      - back
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+  gateway:
+    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/gateway:latest
+    container_name: gateway
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6000:6000"
+    command:
+      - java
+      - -jar
+      - /app.jar
+      - --spring.profiles.active=dev
+    networks:
+      - back
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+  security:
+    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/security:latest
+    container_name: security
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6002:6002"
+    command:
+      - java
+      - -jar
+      - /app.jar
+      - --spring.profiles.active=dev
+    networks:
+      - back
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+networks:
+  back:
+    external:
+      name: root_back
