@@ -17,6 +17,11 @@
   <dependencies>
 
     <!--    ************************** 微服务相关 *********************************-->
+    <!--服务容错 sentinel-->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
 
     <!--    ************************** 本项目 *********************************-->
 

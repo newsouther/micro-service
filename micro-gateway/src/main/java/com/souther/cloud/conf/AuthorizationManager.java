@@ -84,6 +84,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         .map(GrantedAuthority::getAuthority)
 //        .any(authorities::contains)
         .any(roleId -> {
+          // todo 没有加入白名单、也不需要权限控制的路径，访问时，一样是没有权限。
           log.info("访问路径：{}", path);
           log.info("用户角色roleId：{}", roleId);
           log.info("资源需要权限authorities：{}", authorities);

@@ -40,3 +40,4 @@ spring:
 white-list:
   urls:
     - "/micro-security/auth/**"
+    - "/micro-user/test/**"
