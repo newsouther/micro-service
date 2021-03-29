@@ -10,6 +10,7 @@
     <module>micro-pay</module>
     <module>micro-gateway</module>
     <module>micro-mbg</module>
+    <module>micro-oms</module>
   </modules>
 
   <parent>

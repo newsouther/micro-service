@@ -33,6 +33,8 @@ services:
       - -jar
       - /app.jar
       - --spring.profiles.active=dev
+    volumes:
+      - "/dockerconf/project/log/micro-service/micro-gateway:/logs/micro-gateway"  # 项目日志
     networks:
       - back
     deploy:
@@ -51,6 +53,28 @@ services:
       - -jar
       - /app.jar
       - --spring.profiles.active=dev
+    volumes:
+      - "/dockerconf/project/log/micro-service/micro-security:/logs/micro-security"  # 项目日志
+    networks:
+      - back
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+  oms-service:
+    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/oms-service:latest
+    container_name: oms-service
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6003:6003"
+    command:
+      - java
+      - -jar
+      - /app.jar
+      - --spring.profiles.active=dev
+    volumes:
+      - "/dockerconf/project/log/micro-service/micro-oms-service:/logs/micro-oms-service"  # 项目日志
     networks:
       - back
     deploy:
