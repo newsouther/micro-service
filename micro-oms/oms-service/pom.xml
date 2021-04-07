@@ -48,6 +48,12 @@
             <version>${micro.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.souther.cloud</groupId>
+            <artifactId>oms-common</artifactId>
+            <version>${micro.version}</version>
+        </dependency>
+
         <!--    ************************** 其它*********************************-->
 
     </dependencies>
@@ -57,6 +63,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.4.RELEASE</version>
             </plugin>
         </plugins>
     </build>

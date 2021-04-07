@@ -1,7 +1,10 @@
 package com.souther.cloud.controller;
 
+import com.souther.cloud.client.OmsFeign;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @Description:
@@ -11,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-  @GetMapping("test")
-  public String test() {
-    return "user msg";
-  }
+    @Resource
+    private OmsFeign omsFeign;
+
+    @GetMapping("test")
+    public String test() {
+        System.out.println(omsFeign.test());
+        return "user msg";
+    }
 }
