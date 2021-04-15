@@ -1,4 +1,4 @@
-package com.souther.cloud;
+package com.souther.cloud.controller;
 
 import com.souther.cloud.design.factory.LoginHandel;
 import com.souther.cloud.service.AuthService;
