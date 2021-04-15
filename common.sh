@@ -10,3 +10,4 @@ docker push registry.cn-hongkong.aliyuncs.com/souther/micro-service/user-service
 docker push registry.cn-hongkong.aliyuncs.com/souther/micro-service/security:latest
 
 mvn clean package -Dmaven.test.skip=true -pl micro-gateway -am
+###
