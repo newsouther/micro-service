@@ -1,7 +1,7 @@
 version: "3"
 services:
   user-service:
-    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/user-service:latest
+    image: registry.cn-hongkong.aliyuncs.com/souther/user_service:latest
     container_name: user-service
     environment:
       - TZ=Asia/Shanghai
@@ -22,7 +22,7 @@ services:
         limits:
           memory: 1000M
   gateway:
-    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/gateway:latest
+    image: registry.cn-hongkong.aliyuncs.com/souther/gateway:latest
     container_name: gateway
     environment:
       - TZ=Asia/Shanghai
@@ -42,7 +42,7 @@ services:
         limits:
           memory: 1000M
   security:
-    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/security:latest
+    image: registry.cn-hongkong.aliyuncs.com/souther/security:latest
     container_name: security
     environment:
       - TZ=Asia/Shanghai
@@ -62,7 +62,7 @@ services:
         limits:
           memory: 1000M
   oms-service:
-    image: registry.cn-hongkong.aliyuncs.com/souther/micro-service/oms-service:latest
+    image: registry.cn-hongkong.aliyuncs.com/souther/oms_service:latest
     container_name: oms-service
     environment:
       - TZ=Asia/Shanghai
