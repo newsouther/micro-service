@@ -23,12 +23,6 @@
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
     </dependency>
 
-    <!--        配置中心来做配置管理-->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
-
     <!--zipkin-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>

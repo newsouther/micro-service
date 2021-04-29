@@ -1,4 +1,4 @@
-package com.souther.cloud.conf;
+package com.souther.cloud.common.conf;
 
 import com.souther.could.exception.DefaultExceptionAdvice;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

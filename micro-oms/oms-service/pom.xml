@@ -21,19 +21,7 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!--        配置中心来做配置管理-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
         <!--    ************************** 本项目 *********************************-->
-
-        <!--springboot-web-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
         <!--mirco-common-->
         <dependency>
@@ -41,13 +29,13 @@
             <artifactId>micro-common-redis</artifactId>
             <version>${micro.version}</version>
         </dependency>
-
+        <!--        web服务-->
         <dependency>
             <groupId>com.souther.cloud</groupId>
             <artifactId>micro-common-web</artifactId>
             <version>${micro.version}</version>
         </dependency>
-
+        <!--        订单服务-->
         <dependency>
             <groupId>com.souther.cloud</groupId>
             <artifactId>oms-common</artifactId>
@@ -55,6 +43,12 @@
         </dependency>
 
         <!--    ************************** 其它*********************************-->
+
+        <!--集成消息队列-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
     </dependencies>
 

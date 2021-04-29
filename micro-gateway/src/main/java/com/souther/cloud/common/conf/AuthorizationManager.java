@@ -1,4 +1,4 @@
-package com.souther.cloud.conf;
+package com.souther.cloud.common.conf;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;

@@ -1,4 +1,4 @@
-package com.souther.cloud.conf.aspect;
+package com.souther.cloud.common.conf.aspect;
 
 import com.souther.could.conf.aspect.DefaultLogAspect;
 import org.aspectj.lang.annotation.Aspect;

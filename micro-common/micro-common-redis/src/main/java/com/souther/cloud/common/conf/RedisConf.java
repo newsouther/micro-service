@@ -1,4 +1,4 @@
-package com.souther.cloud.conf;
+package com.souther.cloud.common.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

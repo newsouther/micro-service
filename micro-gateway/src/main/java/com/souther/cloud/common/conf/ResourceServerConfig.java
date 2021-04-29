@@ -1,4 +1,4 @@
-package com.souther.cloud.conf;
+package com.souther.cloud.common.conf;
 
 import cn.hutool.core.util.ArrayUtil;
 import com.souther.cloud.component.CustomServerAccessDeniedHandler;
