@@ -4,6 +4,7 @@ import com.souther.cloud.common.conf.rabbit.DirectSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -28,7 +29,7 @@ public class TestController {
     }
 
     @GetMapping("rabbit")
-    public void sendMq() {
-        directSender.sendMsg("测试消息");
+    public void sendMq(@RequestParam Integer delayTime) {
+        directSender.sendMsg("测试消息", delayTime);
     }
 }
