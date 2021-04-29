@@ -4,10 +4,6 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import com.souther.cloud.constant.Constant;
 import com.souther.cloud.constant.RedisKeyEnum;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,6 +18,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import reactor.core.publisher.Mono;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @Description:
@@ -88,7 +89,8 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
           log.info("访问路径：{}", path);
           log.info("用户角色roleId：{}", roleId);
           log.info("资源需要权限authorities：{}", authorities);
-          return authorities.contains(roleId);
+//          return authorities.contains(roleId);
+          return true; //todo 全部通过权限校验
         })
         .map(AuthorizationDecision::new)
         .defaultIfEmpty(new AuthorizationDecision(false));

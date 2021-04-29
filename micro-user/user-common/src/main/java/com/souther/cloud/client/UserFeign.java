@@ -1,6 +1,7 @@
 package com.souther.cloud.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @Auther: souther
@@ -10,4 +11,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient(name = "micro-user")
 public interface UserFeign {
 
+    @GetMapping("test/a")
+    String a();
 }

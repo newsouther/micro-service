@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "micro-oms")
 public interface OmsFeign {
 
-    @GetMapping("test")
+    @GetMapping("test/a")
     String test();
 }

@@ -21,7 +21,7 @@ public class TestController {
     @Resource
     private DirectSender directSender;
 
-    @GetMapping("test")
+    @GetMapping("a")
     public String test() {
         log.info("正在oms-service服务");
         return "oms msg";
