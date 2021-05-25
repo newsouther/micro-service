@@ -1,6 +1,3 @@
-logging:
-  config: classpath:logback-spring.xml
-
 spring:
   redis:
     port: 6379
@@ -13,7 +10,6 @@ spring:
     timeout: 6000
     host: 5.189.166.137
     password: mapple
-
   datasource:
     druid:
       url: jdbc:mysql://5.189.166.137:3307/micro_ums?autoReconnect=true&useSSL=false
@@ -29,23 +25,9 @@ spring:
       remove-abandoned-timeout: 300
       log-abandoned: true
 
-  rabbitmq:
-    host: 5.189.166.137
-    port: 5672
-    virtual-host: /dev
-    username: dev
-    password: dev
-#  过时  publisher-confirms: true # 发送方确认机制:确认消息已经发送到交换机  结合rabbitTemplate.setConfirmCallback
-    publisher-confirm-type: correlated # 发送方correlated交互机制:消息【是否】发送到交换机  结合rabbitTemplate.setConfirmCallback
-    publisher-returns: true # 消息在【未被队列接收时】回调  结合rabbitTemplate.setReturnCallback
-    template:
-      mandatory: true # 交换器无法找到一个符合条件的队列时： true将消息返回给生产者 false消息直接丢弃  与publisher-confirm的区别：这个优先级高
-    listener:
-      simple:
-        acknowledge-mode: none # 默认auto 消费者答应模式  todo：具体选择
-# mybaits-plus配置
+#mybaits-plus配置
 mybatis-plus:
-  # MyBatis Mapper所对应的XML文件位置
+  #MyBatis Mapper所对应的XML文件位置
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.nis.project
@@ -78,3 +60,4 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

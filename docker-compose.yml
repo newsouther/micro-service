@@ -5,13 +5,13 @@ services:
     container_name: user-service
     environment:
       - TZ=Asia/Shanghai
-    ports:
-      - "6001:6001"
+#    ports:
+#      - "2401:2401"
     command:
       - java
       - -jar
       - /app.jar
-      - --spring.profiles.active=dev
+      - --spring.profiles.active=test
     volumes:
       - "/dockerconf/project/log/micro-service/user-service:/logs/micro-user-service"  # 项目日志
     #      - "/dockerconf/project/log/allwin/apiclient_cert.p12:/logs/allwin/apiclient_cert.p12"  # 支付证书
@@ -26,13 +26,13 @@ services:
     container_name: gateway
     environment:
       - TZ=Asia/Shanghai
-    ports:
-      - "6000:6000"
+#    ports:
+#      - "2400:2400"
     command:
       - java
       - -jar
       - /app.jar
-      - --spring.profiles.active=dev
+      - --spring.profiles.active=test
     volumes:
       - "/dockerconf/project/log/micro-service/micro-gateway:/logs/micro-gateway"  # 项目日志
     networks:
@@ -46,13 +46,13 @@ services:
     container_name: security
     environment:
       - TZ=Asia/Shanghai
-    ports:
-      - "6002:6002"
+#    ports:
+#      - "2402:2402"
     command:
       - java
       - -jar
       - /app.jar
-      - --spring.profiles.active=dev
+      - --spring.profiles.active=test
     volumes:
       - "/dockerconf/project/log/micro-service/micro-security:/logs/micro-security"  # 项目日志
     networks:
@@ -66,13 +66,13 @@ services:
     container_name: oms-service
     environment:
       - TZ=Asia/Shanghai
-    ports:
-      - "6003:6003"
+#    ports:
+#      - "2403:2403"
     command:
       - java
       - -jar
       - /app.jar
-      - --spring.profiles.active=dev
+      - --spring.profiles.active=test
     volumes:
       - "/dockerconf/project/log/micro-service/micro-oms-service:/logs/micro-oms-service"  # 项目日志
     networks:

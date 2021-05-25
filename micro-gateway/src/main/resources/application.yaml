@@ -10,6 +10,7 @@ spring:
     timeout: 6000
     host: 5.189.166.137
     password: mapple
+
   datasource:
     druid:
       url: jdbc:mysql://5.189.166.137:3307/micro_ums?autoReconnect=true&useSSL=false
@@ -25,9 +26,18 @@ spring:
       remove-abandoned-timeout: 300
       log-abandoned: true
 
-#mybaits-plus配置
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # 获取JWT验签公钥请求路径
+          jwk-set-uri: 'http://5.189.166.137:6002/auth/publicKey'
+
+# 过滤不需要认证路径条件
+
+# mybaits-plus配置
 mybatis-plus:
-  #MyBatis Mapper所对应的XML文件位置
+  # MyBatis Mapper所对应的XML文件位置
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.nis.project
@@ -60,7 +70,3 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-
-logging:
-  config: classpath:logback-spring.xml

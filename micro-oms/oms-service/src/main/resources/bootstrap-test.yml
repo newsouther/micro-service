@@ -1,9 +1,9 @@
 server:
-  port: 2401
+  port: 2403
 
 spring:
   application:
-    name: micro-user
+    name: micro-oms
   cloud:
     nacos:
       discovery:
