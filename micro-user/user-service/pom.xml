@@ -27,12 +27,6 @@
 <!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
 <!--        </dependency>-->
 
-        <!--链路追踪 Sleuth-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-
         <!--    ************************** 本项目 *********************************-->
 
         <!--springboot-web-->

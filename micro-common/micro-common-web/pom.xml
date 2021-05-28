@@ -23,6 +23,12 @@
       <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
     </dependency>
 
+    <!--链路追踪 Sleuth-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-sleuth</artifactId>
+    </dependency>
+
     <!--        配置中心来做配置管理-->
 <!--    <dependency>-->
 <!--      <groupId>com.alibaba.cloud</groupId>-->
@@ -65,12 +71,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-    </dependency>
-
-    <!--  aop-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
 
     <!--    ************************** 其它 *********************************-->

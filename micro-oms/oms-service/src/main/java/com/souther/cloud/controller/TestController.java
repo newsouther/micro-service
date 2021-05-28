@@ -25,7 +25,8 @@ public class TestController {
     @GetMapping("a")
     public String test() {
         log.info("正在oms-service服务");
-        return "oms msg";
+        throw new RuntimeException("测试异常");
+//        return "oms msg";
     }
 
     @GetMapping("rabbit")
