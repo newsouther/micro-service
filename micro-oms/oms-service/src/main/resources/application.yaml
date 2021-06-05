@@ -44,8 +44,7 @@ spring:
 #rocketmq
 rocketmq:
   name-server: 5.189.166.137:9876   #rocketMQ服务的地址
-  producer:
-    group: shop-order # 生产者组
+  group: shop-order # 生产者组
 
 # mybaits-plus配置
 mybatis-plus:
