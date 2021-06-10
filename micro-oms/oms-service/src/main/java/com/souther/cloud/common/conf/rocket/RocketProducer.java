@@ -41,7 +41,9 @@ public class RocketProducer {
         }
     }
 
-    /** 废弃：放出消息类型控制权 **/
+    /**
+     * 废弃：放出消息类型控制权
+     **/
     @Deprecated
     public boolean send(String topic, String tags, String content) {
         Message msg = new Message(topic, tags, "", content.getBytes());
@@ -52,6 +54,10 @@ public class RocketProducer {
             log.error("rocketmq发送消息异常", e);
         }
         return false;
+    }
+
+    public DefaultMQProducer getProducer() {
+        return this.producer;
     }
 
     @PreDestroy

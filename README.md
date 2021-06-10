@@ -11,11 +11,11 @@
 - [x] jenkins、docker、docker-compose
 - [x] 分布式id 雪花id
 - [x] 设计模式：工厂、策略
+- [x] rocketmq
 
 ### todo-list: 不分先后顺序
 - [ ] 服务容错sentinel
 - [ ] 分布式事务seate
-- [ ] rocketmq
 - [ ] 任务调度（Elastic-Job等）
 - [ ] es分词搜索
 - [ ] redis lua 秒杀方案
