@@ -84,6 +84,20 @@ public class TestController {
             // 发送单向消息，没有任何返回结果
             producer.getProducer().sendOneway(msg3);
 
+            //单向消息 【分区顺序消息】  todo 不理解mq架构图，重新梳理
+//            Message msg4 = new Message("TopicTest" /* Topic */,
+//                    "TagB" /* Tag */,
+//                    ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
+//            );
+//            producer.getProducer().sendOneway(msg4, new MessageQueueSelector() {
+//                @Override
+//                public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
+//                    int id = (int) arg;  //根据订单id选择发送queue   【我们这里不是订单id。。。主要确保同一个事务操作投到同一个队列，就能保证顺序】
+//                    int index = id % mqs.size();
+//                    return mqs.get(index);
+//                }
+//            }, i);
+
         }
         return "ok";
     }

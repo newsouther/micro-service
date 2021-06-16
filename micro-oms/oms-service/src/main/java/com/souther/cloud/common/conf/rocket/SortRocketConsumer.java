@@ -2,9 +2,9 @@ package com.souther.cloud.common.conf.rocket;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
-import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
-import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
+import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
+import org.apache.rocketmq.client.consumer.listener.MessageListenerOrderly;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +15,13 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: 顺序消费
  * @Author souther
  * @Date: 2021/6/10 10:03
  */
 @Slf4j
 @Service
-public class RocketConsumer {
+public class SortRocketConsumer {
 
     @Value("${rocketmq.name-server}")
     private String nameServer;
@@ -35,21 +35,23 @@ public class RocketConsumer {
     public void initMQConsumer() {
         consumer = new DefaultMQPushConsumer(group);
         consumer.setNamesrvAddr(nameServer);
-        consumer.setInstanceName("consumer-instance-1");
+        consumer.setInstanceName("consumer-instance-2");
         try {
             // 订阅一个或者多个Topic，以及Tag来过滤需要消费的消息
-            consumer.subscribe("TopicTest", "TagA");
+            consumer.subscribe("TopicTest", "TagB");
             // 注册回调实现类来处理从broker拉取回来的消息
-            consumer.registerMessageListener(new MessageListenerConcurrently() {
+            consumer.registerMessageListener(new MessageListenerOrderly() {
                 @Override
-                public ConsumeConcurrentlyStatus consumeMessage(
-                        List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
+                public ConsumeOrderlyStatus consumeMessage(
+                        List<MessageExt> msgs, ConsumeOrderlyContext context) {
+                    context.setAutoCommit(true);
                     for (MessageExt msg : msgs) {
-//                        log.info(String.format("Message Received: %s", new String(msg.getBody())));
+                        log.info(String.format("Message Received: %s", new String(msg.getBody())));
+                        // 可以看到每个queue有唯一的consume线程来消费, 订单对每个queue(分区)有序
                         log.info("consumeThread=" + Thread.currentThread().getName() + "queueId=" + msg.getQueueId() + ", content:" + new String(msg.getBody()));
                     }
                     // 标记该消息已经被成功消费
-                    return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+                    return ConsumeOrderlyStatus.SUCCESS;
                 }
             });
             // 启动消费者实例
