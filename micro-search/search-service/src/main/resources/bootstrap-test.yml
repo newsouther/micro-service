@@ -18,3 +18,10 @@ spring:
 #          data-id: micro-user-common.yml
 #          group: micro-service   # 默认为DEFAULT_GROUP
 #          refresh: true   # 是否动态刷新，默认为false
+
+# Elasticsearch相关的配置
+elasticsearch:
+  clientIp: elasticsearch
+  httpPort: 9200
+  username: elastic
+  password: souther
