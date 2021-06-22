@@ -81,6 +81,26 @@ services:
       resources:
         limits:
           memory: 1000M
+  search-service:
+    image: registry.cn-hongkong.aliyuncs.com/souther/search_service:latest
+    container_name: search-service
+    environment:
+      - TZ=Asia/Shanghai
+#    ports:
+#      - "2404:2404"
+    command:
+      - java
+      - -jar
+      - /app.jar
+      - --spring.profiles.active=test
+    volumes:
+      - "/dockerconf/project/log/micro-service/micro-search-service:/logs/micro-search-service"  # 项目日志
+    networks:
+      - back
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
 networks:
   back:
     external:
