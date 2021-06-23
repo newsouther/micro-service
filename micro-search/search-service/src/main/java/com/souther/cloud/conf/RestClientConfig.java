@@ -9,6 +9,7 @@ import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -31,6 +32,7 @@ public class RestClientConfig {
     @Value("${elasticsearch.password}")
     private String password;
 
+    @Bean
     public RestHighLevelClient esClient() {
 
         //认证
@@ -39,7 +41,7 @@ public class RestClientConfig {
 
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost(clientIp, httpPort, "http"))
+                        new HttpHost(clientIp, httpPort, "https"))
                         .setHttpClientConfigCallback(
                                 (HttpAsyncClientBuilder httpAsyncClientBuilder) ->
                                         httpAsyncClientBuilder.setDefaultCredentialsProvider(credentialsProvider)
