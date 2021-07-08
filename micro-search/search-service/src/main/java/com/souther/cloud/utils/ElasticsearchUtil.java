@@ -20,6 +20,7 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.client.indices.GetIndexResponse;
 import org.elasticsearch.common.Strings;
 import org.elasticsearch.common.text.Text;
 import org.elasticsearch.common.unit.DistanceUnit;
@@ -102,6 +103,20 @@ public class ElasticsearchUtil {
         AcknowledgedResponse delete = restHighLevelClient.indices()
                 .delete(request, RequestOptions.DEFAULT);
         return delete.isAcknowledged();
+    }
+
+    /**
+     * 获取全部index
+     *
+     * @return
+     * @throws IOException
+     * @Author souther
+     */
+    public String[] allIndex() throws IOException {
+        GetIndexRequest request = new GetIndexRequest("*");
+        GetIndexResponse response = restHighLevelClient.indices().get(request, RequestOptions.DEFAULT);
+        String[] indices = response.getIndices();
+        return indices;
     }
 
     /**
